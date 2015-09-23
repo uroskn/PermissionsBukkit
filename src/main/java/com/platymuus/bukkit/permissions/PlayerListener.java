@@ -6,6 +6,9 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityTargetEvent;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.*;
 
 /**
@@ -86,6 +89,30 @@ class PlayerListener implements Listener {
         if (event.isCancelled()) return;
         if ((event.getDamager() instanceof Player) && (!((Player)event.getDamager()).hasPermission("permissions.build"))) {
             bother((Player)event.getDamager());
+            event.setCancelled(true);
+        }
+    }
+    
+    @EventHandler
+    public void onEntityTarget(EntityTargetEvent event) {
+        if (event.isCancelled()) return;
+        if ((event.getTarget() instanceof Player) && (!((Player)event.getTarget()).hasPermission("permissions.target"))) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onFoodLevelChange(FoodLevelChangeEvent event) {
+        if (event.isCancelled()) return;
+        if ((event.getEntity() instanceof Player) && (!((Player)event.getEntity()).hasPermission("permissions.hunger"))) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onPlayerDamage(EntityDamageEvent event) {
+        if (event.isCancelled()) return;
+        if ((event.getEntity() instanceof Player) && (!((Player)event.getEntity()).hasPermission("permissions.damage"))) {
             event.setCancelled(true);
         }
     }

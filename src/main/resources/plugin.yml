@@ -46,6 +46,15 @@ permissions:
   permissions.build:
     description: Allows player to build.
     default: true
+  permissions.target:
+    description: Allows player to be targeted by entities.
+    default: true
+  permissions.hunger:
+    description: Allows player to be hungry.
+    default: true
+  permissions.damage:
+    description: Allows player to take damage.
+    default: true
   permissions.help:
     description: Allows viewing of usage for /permissions.
   permissions.reload:
