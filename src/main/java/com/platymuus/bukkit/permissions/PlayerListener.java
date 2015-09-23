@@ -60,7 +60,7 @@ class PlayerListener implements Listener {
         if (event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_AIR) {
             return;
         }
-        if (!event.getPlayer().hasPermission("permissions.build")) {
+        if (!event.getPlayer().hasPermission("permissions.interact")) {
             bother(event.getPlayer());
             event.setCancelled(true);
         }
@@ -87,7 +87,7 @@ class PlayerListener implements Listener {
     @EventHandler
     public void onPlayerAttack(EntityDamageByEntityEvent event) {
         if (event.isCancelled()) return;
-        if ((event.getDamager() instanceof Player) && (!((Player)event.getDamager()).hasPermission("permissions.build"))) {
+        if ((event.getDamager() instanceof Player) && (!((Player)event.getDamager()).hasPermission("permissions.attack"))) {
             bother((Player)event.getDamager());
             event.setCancelled(true);
         }

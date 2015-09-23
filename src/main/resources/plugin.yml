@@ -43,6 +43,12 @@ permissions:
       permissions.setrank: true
       permissions.group.*: true
       permissions.player.*: true
+  permissions.interact:
+    description: Allows player to interact with the world
+    default: true
+  permissions.attack:
+    description: Allows player to attack other entities.
+    default: true
   permissions.build:
     description: Allows player to build.
     default: true
